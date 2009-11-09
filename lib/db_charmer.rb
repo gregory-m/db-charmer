@@ -39,6 +39,7 @@ require 'db_charmer/connection_proxy'
 require 'db_charmer/connection_switch'
 require 'db_charmer/scope_proxy'
 require 'db_charmer/multi_db_proxy'
+require 'db_charmer/schema_dumper'
 
 # Enable misc AR extensions
 ActiveRecord::Base.extend(DbCharmer::ActiveRecordExtensions::ClassMethods)

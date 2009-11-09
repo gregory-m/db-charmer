@@ -7,14 +7,14 @@ module DbCharmer
     end
 
     def on_db(db_name)
-      announce "Switching connection to #{db_name}"
+      announce "Switching connection to #{db_name}" if respond_to?("announce")
       old_proxy = ActiveRecord::Base.db_charmer_connection_proxy
       ActiveRecord::Base.switch_connection_to(db_name, DbCharmer.migration_connections_should_exist?)
       yield
     ensure
-      announce "Checking all database connections"
+      announce "Checking all database connections" if respond_to?("announce")
       ActiveRecord::Base.verify_active_connections!
-      announce "Switching connection back to default"
+      announce "Switching connection back to default" if respond_to?("announce")
       ActiveRecord::Base.switch_connection_to(old_proxy)
     end
 
